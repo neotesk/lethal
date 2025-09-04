@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# We will perform urandom
+
+msg () {
+    if [[ $__CANITALK -eq 1 ]]; then
+        echo $@
+    fi
+}
+
+for var in "$@"; do
+    msg "Wiping $var..."
+    FILESIZE=$(stat -c%s "$var")
+    dd if=/dev/urandom of="$var" bs=$FILESIZE count=1 &> /dev/null
+    rm "$var"
+done
