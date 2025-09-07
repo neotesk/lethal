@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ ! -n "$1" ] || [ ! -n "$2" ]; then
+    echo "Please supply the parameters like so: <BLOCK_ID> <BLOCK_LOCATION>"
+    echo "Or alternatively you can do: <BLOCK_ID> <BLOCK_PATH> <KEY_FILE_PATH>"
+    exit 1
+fi
+
+if [ -n "$3" ]; then
+    sudo cryptsetup open --type plain --cipher aes-xts-plain64 --offset 0 --key-size 512 --sector-size 512 --hash sha512 --key-file "$3" "$2" "$1"
+else
+    sudo cryptsetup open --type plain --cipher aes-xts-plain64 --offset 0 --key-size 512 --sector-size 512 --hash sha512 "$2" "$1"
+fi
