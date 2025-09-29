@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -n "$1" ] || [ ! -n "$2" ]; then
-    echo "Please supply the parameters like so: <BLOCK_ID> <BLOCK_LOCATION>"
+    echo "Please supply the parameters like so: <BLOCK_ID> <BLOCK_PATH>"
     echo "Or alternatively you can do: <BLOCK_ID> <BLOCK_PATH> <KEY_FILE_PATH>"
     exit 1
 fi
